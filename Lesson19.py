@@ -126,16 +126,16 @@
 
 
 # Рекурсия
-def sum_list(lst):
-    if len(lst) == 1:
-        print(lst, "=> lst[0]:", lst[0])
-        return lst[0]
-    else:
-        print(lst, "=> lst[0]:", lst[0])
-        return lst[0] + sum_list(lst[1:])
-
-
-print(sum_list([1, 3, 5, 7, 9]))
+# def sum_list(lst):
+#     if len(lst) == 1:
+#         print(lst, "=> lst[0]:", lst[0])
+#         return lst[0]
+#     else:
+#         print(lst, "=> lst[0]:", lst[0])
+#         return lst[0] + sum_list(lst[1:])
+#
+#
+# print(sum_list([1, 3, 5, 7, 9]))
 
 
 # Преобразование числа
@@ -174,3 +174,6 @@ print(sum_list([1, 3, 5, 7, 9]))
 #
 #
 # print(count_items(names))
+
+
+print("Текст в локальном репозитории")
