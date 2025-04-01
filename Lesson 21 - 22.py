@@ -63,21 +63,21 @@
 # f.close()
 
 # Задача
-# file = "text2.txt"
-# f = open(file, 'w')
-# f.write('Замена строки в текстовом файле; \nизменить строку в списке; \nзаписать список в файл; \n')
-# f.close()
-#
-# f = open(file, 'r')
-# read_line = f.readlines()
-# print(read_line)
-# read_line[1] = 'hello world'
-# print(read_line)
-# f.close()
-#
-# f = open(file, 'w')
-# f.writelines(read_line)
-# f.close()
+file = "text2.txt"
+f = open(file, 'w')
+f.write('Замена строки в текстовом файле; \nизменить строку в списке; \nзаписать список в файл; \n')
+f.close()
+
+f = open(file, 'r')
+read_line = f.readlines()
+print(read_line)
+read_line[1] = 'hello world'
+print(read_line)
+f.close()
+
+f = open(file, 'w')
+f.writelines(read_line)
+f.close()
 
 # Работа с курсором
 # f = open('test.txt', 'r')
@@ -159,7 +159,7 @@
 #         fw.write(line)
 
 # Модуль OS
-import os
+# import os
 
 #
 # print(os.getcwd())  # Путь к текущей директории
@@ -177,4 +177,4 @@ import os
 # os.remove("xyz.txt")  # Удалить файл
 # os.rename('two.txt', "www.txt")  # Переименовали файл
 # os.rename('www.txt', "folder/www.txt") # перемещение файла в папку
-os.rename('text5.txt', "nested1/nested2/nested3/text5.txt")
+# os.rename('text5.txt', "nested1/nested2/nested3/text5.txt")
