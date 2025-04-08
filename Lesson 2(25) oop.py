@@ -1,44 +1,44 @@
 # 2 занятие задача на вывод данных
-# class Human:
-#     name = 'Daniil'
-#     birthday = '01.02.2006'
-#     phone = '00-00-00'
-#     country = 'Russia'
-#     city = "VRN"
-#     address = 'street, house'
-#
-#     def print_info(self):
-#         print(" Персональные данные ".center(40, "*"))
-#         print(f"Имя: {self.name} \nДата рождения: {self.birthday} \nНомер телефон {self.phone} "
-#               f"\nСтрана: {self.country} \nГород: {self.city} \nДом-адрес: {self.address}")
-#         print("=" * 40)
-#
-#     def input_info(self, first_name, birthday, phone, country, city, address):
-#         self.name = first_name
-#         self.birthday = birthday
-#         self.phone = phone
-#         self.country = country
-#         self.city = city
-#         self.address = address
-#
-#     def set_name(self, name):  # устанавливаем новое имя
-#         self.name = name
-#
-#     def get_name(self):  # получаем новое имя
-#         return self.name
-#
-#
-# h1 = Human()
-# h1.print_info()
-#
-# h1.input_info("Юля", "23.05.1999", "8-800-355-35-35",
-#               "Россия", 'Воронеж', "Чистопрудный бульвар, 1А")
-# h1.print_info()
-#
-# h1.set_name("Микаэлян")
-# h1.print_info()
-#
-# print(h1.get_name())
+class Human:
+    name = 'Daniil'
+    birthday = '01.02.2006'
+    phone = '00-00-00'
+    country = 'Russia'
+    city = "VRN"
+    address = 'street, house'
+
+    def print_info(self):
+        print(" Персональные данные ".center(40, "*"))
+        print(f"Имя: {self.name} \nДата рождения: {self.birthday} \nНомер телефон {self.phone} "
+              f"\nСтрана: {self.country} \nГород: {self.city} \nДом-адрес: {self.address}")
+        print("=" * 40)
+
+    def input_info(self, first_name, birthday, phone, country, city, address):
+        self.name = first_name
+        self.birthday = birthday
+        self.phone = phone
+        self.country = country
+        self.city = city
+        self.address = address
+
+    def set_name(self, name):  # устанавливаем новое имя
+        self.name = name
+
+    def get_name(self):  # получаем новое имя
+        return self.name
+
+
+h1 = Human()
+h1.print_info()
+
+h1.input_info("Юля", "23.05.1999", "8-800-355-35-35",
+              "Россия", 'Воронеж', "Чистопрудный бульвар, 1А")
+h1.print_info()
+
+h1.set_name("Микаэлян")
+h1.print_info()
+
+print(h1.get_name())
 
 # Задача 2 с новыми возможностями
 # class Person:
