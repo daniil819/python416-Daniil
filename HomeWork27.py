@@ -1,4 +1,4 @@
-# Вариант 1 через property
+# # Вариант 1 через property
 class Account:
     rate_usd = 0.013
     rate_eur = 0.011
@@ -20,14 +20,14 @@ class Account:
 
     @property
     def num(self):
-        if isinstance(self.__num, int):
-            return self.__num
-        else:
-            raise ValueError("Только цифры")
+        return self.__num
 
     @num.setter
     def num(self, n):
-        self.__num = n
+        if isinstance(n, int):
+            self.__num = n
+        else:
+            raise ValueError('Только целые числа')
 
     @property
     def sur(self):
@@ -35,7 +35,10 @@ class Account:
 
     @sur.setter
     def sur(self, sn):
-        self.__surname = sn
+        if isinstance(sn, str):
+            self.__surname = sn
+        else:
+            raise ValueError('Только строки')
 
     @property
     def per(self):
@@ -43,7 +46,10 @@ class Account:
 
     @per.setter
     def per(self, pr):
-        self.__percent = pr
+        if isinstance(pr, int):
+            self.__percent = pr
+        else:
+            raise ValueError('Только числа')
 
     @property
     def val(self):
@@ -51,7 +57,10 @@ class Account:
 
     @val.setter
     def val(self, vl):
-        self.__value = vl
+        if isinstance(vl, int):
+            self.__value = vl
+        else:
+            raise ValueError('Только числа')
 
     @staticmethod
     def convert(value, rate):
@@ -151,29 +160,41 @@ class Account:
         print("*" * 50)
         print(f"Счёт #{self.__num} принадлежащий {self.__surname} закрыт")
 
-    def set_num(self):
+    def set_num(self, n):
+        if isinstance(n, int):
+            self.__num = n
+        else:
+            raise ValueError('Только целые числа')
+
+    def get_num(self):
         return self.__num
 
-    def get_num(self, n):
-        self.__num = n
+    def set_sur(self, sn):
+        if isinstance(sn, str):
+            self.__surname = sn
+        else:
+            raise ValueError('Только строки')
 
-    def set_sur(self):
+    def get_sur(self):
         return self.__surname
 
-    def get_sur(self, sn):
-        self.__surname = sn
+    def set_per(self, pr):
+        if isinstance(pr, int):
+            self.__percent = pr
+        else:
+            raise ValueError('Только числа')
 
-    def set_per(self):
+    def get_per(self):
         return self.__percent
 
-    def get_per(self, pr):
-        self.__percent = pr
+    def set_value(self, vl):
+        if isinstance(vl, int):
+            self.__value = vl
+        else:
+            raise ValueError('Только числа')
 
-    def set_value(self):
+    def get_value(self):
         return self.__value
-
-    def get_value(self, vl):
-        self.__value = vl
 
     @staticmethod
     def convert(value, rate):
@@ -228,7 +249,7 @@ class Account:
         print("-" * 20)
 
 
-acc = Account("12345", "Долгих", 0.03, 1500)
+acc = Account(1234, "Долгих", 0.03, 1500)
 acc.print_info()
 acc.convert_to_usd()
 acc.convert_to_eur()
