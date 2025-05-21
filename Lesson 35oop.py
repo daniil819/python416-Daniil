@@ -145,36 +145,36 @@ from asyncore import write
 # print(f"Пользователи {max_users} выполнил {max_complete} задач")
 
 # Формат CSV
-# import csv
+import csv
 #
-# with open("data1.csv") as f:
-#     file_names = ['Имя', 'Профессия', 'Год рождения']
-#     file_reader = csv.DictReader(f, delimiter=';', fieldnames=file_names)
-#     count = 0
-#
-#     for row in file_reader:
-#         # print(row)
-#         if count == 0:
-#             print(f"Файл содержит столбцы {', '.join(row)}")
-#         else:
-#             print(f"\t{row['Имя']} - {row['Профессия']}. Родился в {row['Год рождения']} годы.")
-#         count += 1
+with open("data1.csv") as f:
+    file_names = ['Имя', 'Профессия', 'Год рождения']
+    file_reader = csv.DictReader(f, delimiter=';', fieldnames=file_names)
+    count = 0
 
-# with open("student.csv", "w") as f:
-#     writer = csv.writer(f, delimiter=";", lineterminator="\r")
-#     writer.writerow(['Имя', 'Класс', 'Возраст'])
-#     writer.writerow(["Женя", 9, 15])
-#     writer.writerow(["Саня", 5, 12])
-#     writer.writerow(["Маша", 11, 17])
+    for row in file_reader:
+        # print(row)
+        if count == 0:
+            print(f"Файл содержит столбцы {', '.join(row)}")
+        else:
+            print(f"\t{row['Имя']} - {row['Профессия']}. Родился в {row['Год рождения']} годы.")
+        count += 1
 
-data = [['hostname', 'vendor', 'model', 'location'],
-        ['sw1', 'Cisco', '3750', 'London, Best str'],
-        ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
-        ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
-        ['sw4', 'Cisco', '3650', 'London, Best str']]
-with open('sw_data.csv', 'w') as f:
-    writer = csv.writer(f, delimiter=";", lineterminator='\r')
-    for row in data:
-        writer.writerow(row)
-with open('sw_data.csv', 'r') as f:
-    print(f.read())
+with open("student.csv", "w") as f:
+    writer = csv.writer(f, delimiter=";", lineterminator="\r")
+    writer.writerow(['Имя', 'Класс', 'Возраст'])
+    writer.writerow(["Женя", 9, 15])
+    writer.writerow(["Саня", 5, 12])
+    writer.writerow(["Маша", 11, 17])
+
+# data = [['hostname', 'vendor', 'model', 'location'],
+#         ['sw1', 'Cisco', '3750', 'London, Best str'],
+#         ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
+#         ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
+#         ['sw4', 'Cisco', '3650', 'London, Best str']]
+# with open('sw_data.csv', 'w') as f:
+#     writer = csv.writer(f, delimiter=";", lineterminator='\r')
+#     for row in data:
+#         writer.writerow(row)
+# with open('sw_data.csv', 'r') as f:
+#     print(f.read())
