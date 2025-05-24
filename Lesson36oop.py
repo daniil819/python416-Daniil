@@ -157,6 +157,7 @@ import csv
 
 
 #
+import csv
 import requests
 from bs4 import BeautifulSoup
 
@@ -174,32 +175,32 @@ def get_data(html):
     soup = BeautifulSoup(html, "lxml")
     elements = soup.find_all("li", class_="wp-block-post")
     for el in elements:
-        name = el.find('h3').text
-        url = el.find('h3').find('a').get("href")
+        name = el.find("h3").text
+        url = el.find("h3").find("a").get("href")
         snippet = el.find("div", class_="entry-excerpt").text.strip()
-        active = el.find("span", class_='active-installs').text.strip()
+        active = el.find("span", class_="active-installs").text.strip()
         tested = el.find("span", class_="tested-with").text.strip()
         test = refine_cy(tested)
         data = {
-            'name': name,
-            'url': url,
-            'snippet': snippet,
-            'active': active,
-            'test': test,
+            "name": name,
+            "url": url,
+            "snippet": snippet,
+            "active": active,
+            "test": test
         }
-        print(data)
+        write_csv(data)
 
 
 def write_csv(data):
-    with open("plugin1.csv", "a") as f:
+    with open("plugins1.csv", "a", encoding="utf-8-sig") as f:
         writer = csv.writer(f, delimiter=",", lineterminator="\r")
-        writer.writerow()
-
+        writer.writerow((data["name"], data["url"], data["snippet"], data["active"], data["test"]))
 
 
 def main():
-    url = "https://ru.wordpress.org/plugins/browse/blocks/"
-    get_data(get_html(url))
+    for i in range(3, 23):
+        url = f"https://ru.wordpress.org/plugins/browse/blocks/page/{i}/"
+        get_data(get_html(url))
 
 
 if __name__ == '__main__':
