@@ -3,14 +3,14 @@ import os
 
 
 class Article:
-    def __init__(self, title, author, pages, description):
-        self.title = title
+    def __init__(self, name, genre, author, year):
+        self.name = name
+        self.genre = genre
         self.author = author
-        self.pages = pages
-        self.description = description
+        self.year = year
 
     def __str__(self):
-        return f"{self.title} ({self.author})"
+        return f"{self.name} ({self.genre} {self.author} {self.year})"
 
 
 class ArticleModel:
@@ -20,23 +20,23 @@ class ArticleModel:
 
     def add_article(self, dict_article):
         article = Article(*dict_article.values())
-        self.articles[article.title] = article
+        self.articles[article.name] = article
 
     def get_all_articles(self):
         return self.articles.values()
 
-    def get_single_articles(self, user_title):
-        article = self.articles[user_title]
+    def get_single_articles(self, user_name):
+        article = self.articles[user_name]
         dict_article = {
-            "название": article.title,
-            "автор": article.author,
-            "количество страниц": article.pages,
-            "описание": article.description
+            "название": article.name,
+            "жанр": article.genre,
+            "Режиссёр": article.author,
+            "год": article.year
         }
         return dict_article
 
-    def remove_article(self, user_title):
-        return self.articles.pop(user_title)
+    def remove_article(self, user_name):
+        return self.articles.pop(user_name)
 
     def save_data(self):
         with open(self.db_name, "wb") as f:

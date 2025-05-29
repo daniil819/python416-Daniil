@@ -4,8 +4,8 @@ from model import ArticleModel
 
 class Controller:
     def __init__(self):
-        self.article_model = ArticleModel()  # model
-        self.user_interface = UserInterface()  # view
+        self.article_model = ArticleModel()
+        self.user_interface = UserInterface()
 
     def run(self):
         answer = None
@@ -21,22 +21,22 @@ class Controller:
             articles = self.article_model.get_all_articles()
             self.user_interface.show_all_articles(articles)
         elif answer == "3":
-            article_title = self.user_interface.get_user_article()
+            article_name = self.user_interface.get_user_article()
             try:
-                article = self.article_model.get_single_articles(article_title)
+                article = self.article_model.get_single_articles(article_name)
             except KeyError:
-                self.user_interface.show_incorrect_title_error(article_title)
+                self.user_interface.show_incorrect_title_error(article_name)
             else:
                 self.user_interface.show_single_article(article)
         # Удаление
         elif answer == "4":
-            article_title = self.user_interface.get_user_article()
+            article_name = self.user_interface.get_user_article()
             try:
-                title = self.article_model.remove_article(article_title)
+                title = self.article_model.remove_article(article_name)
             except KeyError:
-                self.user_interface.show_incorrect_title_error(article_title)
+                self.user_interface.show_incorrect_title_error(article_name)
             else:
-                self.user_interface.remove_single_article(title)
+                self.user_interface.remove_single_article(article_name)
         elif answer == "q":
             self.article_model.save_data()
 
