@@ -75,26 +75,50 @@
 # print(msg)
 
 # ЧЕРЕЗ КЛАСС
-# from jinja2 import Template
-#
-#
-# class Persone:
-#     def __init__(self, name, age):
-#         self.name = name
-#         self.age = age
-#
-#     def get_name(self):
-#         return self.name
-#
-#     def get_age(self):
-#         return self.age
-#
-#
-# per = Persone("Игорь", 28)
-# tm = Template("Мне {{p}} лет. Меня зовут {{p}}")
-# msg = tm.render(p=per)
-# print(msg)
+from jinja2 import Template
+
+
+class Persone:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def get_name(self):
+        return self.name
+
+    def get_age(self):
+        return self.age
+
+
+per = Persone("Игорь", 28)
+tm = Template("Мне {{p}} лет. Меня зовут {{p}}")
+msg = tm.render(p=per)
+print(msg)
+
 
 cities = [
-
+    {'id': 1, 'city': 'Москва'},
+    {'id': 2, 'city': 'Смоленск'},
+    {'id': 3, 'city': 'Минск'},
+    {'id': 4, 'city': 'Сочи'},
+    {'id': 5, 'city': 'Ярославль'},
 ]
+
+link = """
+<select>
+{% for c in cities %}
+    {% if c.id > 3 %}
+        <option value="{{ c['id'] }}">{{ c['city'] }}</option>
+    {% elif c.city == 'Москва' %}
+        <option>{{ c['city'] }}</option>
+    {% else %}
+        {{ c['city'] }}
+    {% endif %}
+{% endfor %}
+</select>
+"""
+#
+# tm = Template(link)
+# msg = tm.render(cities=cities)
+#
+# print(msg)

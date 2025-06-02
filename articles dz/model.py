@@ -3,11 +3,14 @@ import os
 
 
 class Article:
-    def __init__(self, name, genre, author, year):
+    def __init__(self, name, genre, author, year, time, study, actor):
         self.name = name
         self.genre = genre
         self.author = author
         self.year = year
+        self.time = time
+        self.study = study
+        self.actor = actor
 
     def __str__(self):
         return f"{self.name} ({self.genre} {self.author} {self.year})"
@@ -31,7 +34,10 @@ class ArticleModel:
             "название": article.name,
             "жанр": article.genre,
             "Режиссёр": article.author,
-            "год": article.year
+            "год": article.year,
+            "время": article.time,
+            "студия": article.study,
+            "актёр": article.actor
         }
         return dict_article
 

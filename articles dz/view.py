@@ -33,9 +33,9 @@ class UserInterface:
             "жанр:": None,
             "режиссер:": None,
             "год выпуска:": None,
-            # 'Длительность:': None,
-            # 'Студия:': None,
-            # 'Актёр:': None
+            'Длительность:': None,
+            'Студия:': None,
+            'Актёр:': None
         }
         for key in dict_article:
             dict_article[key] = input(f"{key}")
