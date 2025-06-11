@@ -1,0 +1,21 @@
+5.	Определите максимальное количество закупленного товара шт.(кг)
+SELECT SUM(Count) AS [закупленный товар]
+FROM ClientGoods
+6.	Какая минимальная сумма покупки, на которую клиент сделал заказ.
+SELECT MIN(CostUnit) AS [минимальная сумма]
+FROM ClientGoods
+7.	Посчитать на какую сумму было продано товара магазинам.
+SELECT SUM(CostUnit*Count) AS [сумма проданого товара]
+FROM SallerGoods
+8.	Сосчитать общее количество видов закупленных фирмой вафель.
+SELECT Count(Goods) 
+FROM SallerGoods
+WHERE Goods = 'Вафли "Артек"' OR Goods = 'Вафли "Снежинка"'
+9.	Выведите среднюю цену на растительное масло (закупочную).
+SELECT AVG(CostUnit*Count) AS [средняя цена]
+FROM SallerGoods
+WHERE Goods = 'масло подсолнечное'
+10.	Определите сколько всего было продано килограмм яблок.
+SELECT SUM(Count) AS [сколько всего продано яблок]
+FROM SallerGoods
+WHERE Goods = 'Яблоки, Семеренко' OR Goods = 'Яблоки, Айдарет'
