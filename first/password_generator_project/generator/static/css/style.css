@@ -1,0 +1,38 @@
+body{
+background: lightyellow;
+}
+.container{
+    width: 400px;
+    margin: 0 auto;
+}
+.container h1{
+    text-align: center;
+}
+
+.container form, .container h2{
+    background: greenyellow;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+.name {
+    font-size: 40px;
+    color: red;
+    font-weight: 400;
+    text-align: center;
+}
+.container_TWO{
+    font-size: 20px;
+    color: black;
+    background-color: greenyellow;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+.out {
+    background-color: yellowgreen;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 6px;
+
+}
