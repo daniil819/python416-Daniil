@@ -64,8 +64,6 @@ def show_post(id_post):
     db = get_db()
     dbase = FDataBase(db)
     title, post = dbase.get_post(id_post)
-    if not title:
-        abort(404)
 
     return render_template('post.html', menu=dbase.get_menu(), title=title, post=post)
 

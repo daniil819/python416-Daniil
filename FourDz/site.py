@@ -1,6 +1,6 @@
 import sqlite3
 import os
-from flask import Flask, render_template, flash, request, g
+from flask import Flask, render_template, flash, request, g, abort
 from FourDz.sitedb import FDataBase
 
 DATABASE = '/tmp/flskDZ.db'
@@ -50,11 +50,36 @@ def add_post():
             if not res:
                 flash("Ошибка", category="error")
             else:
-                flash("Предложение отправленно успешно", category="success")
+                flash("Предложение отправлено успешно", category="success")
         else:
             flash("Ошибка отправки", category="error")
 
     return render_template('add_post.html', menu=dbase.get_menu())
+
+
+@app.route("/contact")
+def contact():
+    db = get_db()
+    dbase = FDataBase(db)
+    return render_template('contact.html', menu=dbase.get_menu())
+
+
+@app.route("/about")
+def about():
+    db = get_db()
+    dbase = FDataBase(db)
+    return render_template('about.html', menu=dbase.get_menu())
+
+
+@app.route("/post/<int:id_post>")
+def show_post(id_post):
+    db = get_db()
+    dbase = FDataBase(db)
+    title, post = dbase.get_post(id_post)
+    if not title:
+        abort(404)
+
+    return render_template('post.html', menu=dbase.get_menu(), title=title, post=post)
 
 
 @app.teardown_appcontext
