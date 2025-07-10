@@ -3,6 +3,7 @@
 {% block content %}
 
 <h1>Блог</h1>
+<h2 class="count">Постов: {{ blogs.count }}</h2>
 {% for blog in blogs %}
 
 <div class="element">
@@ -10,7 +11,7 @@
         <a href="{% url 'detail' blog.id %}">{{ blog.title }}</a>
     </h2>
     <div class="blog_text">
-        <h5>{{ blog.date|date: 'd.m.Y' }}</h5>
+        <h5>{{ blog.date|date:'d.m.Y' }}</h5>
         <div>{{ blog.description|striptags|truncatechars:360 }}</div>
     </div>
 </div>
