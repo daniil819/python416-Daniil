@@ -2,7 +2,7 @@
 
 body{
     font-family: "Roboto", sans-serif;
-    background: #ff0000;
+    background: #60a6cf;
     padding: 0;
     margin: 0;
 }
@@ -20,8 +20,8 @@ body{
 }
 .element, .count{
     flex-basis: 360px;
-    background: rgb(255, 255, 0);
-    border: 6px solid rgb(255, 0, 0);
+    background: rgb(42, 247, 42);
+    border: 6px solid rgb(0, 0, 0);
     margin-bottom: 60px;
 }
 .block img{
@@ -51,7 +51,7 @@ h2{
     margin: 0;
 }
 .top a{
-    color: rgb(202, 185, 185);
+    color: rgb(198, 204, 178);
     text-decoration: none;
     padding: 20px;
     display: block;
@@ -100,4 +100,9 @@ h2{
 
 .menu li{
     margin-left: 40px;
+}
+
+.logo img{
+    width: 100px;
+    height: 100px;
 }
