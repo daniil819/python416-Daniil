@@ -5,6 +5,8 @@ from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .forms import TodoForm
 from .models import Todo
+from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -13,55 +15,53 @@ def home(request):
 
 def signup_user(request):
     if request.method == "GET":
-        return render(request, 'todo/signupuser.html',
-                      {'form': UserCreationForm()})
+        return render(request, 'todo/signupuser.html', {'form': UserCreationForm()})
     else:
         if request.POST['password1'] == request.POST['password2']:
             try:
-                user = User.objects.create_user(request.POST['username'],
-                                                password=request.POST['password1'])
+                user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
                 user.save()
                 login(request, user)
                 return redirect('currenttodos')
             except IntegrityError:
                 return render(request, 'todo/signupuser.html',
                               {'form': UserCreationForm(),
-                               'error': 'Такое имя пользователя уже существует. '
-                                        'Задайте другое'})
+                               'error': 'Такое имя пользователя уже существует. Задайте другое'})
         else:
-            return render(request, 'todo/signupuser.html',
-                          {'form': UserCreationForm(),
-                           'error': 'Пароли не совпадают'})
+            return render(request, 'todo/signupuser.html', {'form': UserCreationForm(), 'error': 'Пароли не совпадают'})
 
 
+@login_required
 def current_todos(request):
     todos = Todo.objects.filter(user=request.user, date_completed__isnull=True)
     return render(request, 'todo/currenttodos.html',
                   {'todos': todos})
 
 
+# выход из учётки
 def logout_user(request):
     if request.method == "POST":
         logout(request)
         return redirect('home')
 
 
+# регестрация
 def login_user(request):
     if request.method == "GET":
-        return render(request, 'todo/loginuser.html',
-                      {'form': AuthenticationForm()})
+        return render(request, 'todo/loginuser.html', {'form': AuthenticationForm()})
     else:
-        user = authenticate(request, username=request.POST['username'],
-                            password=request.POST['password'])
+        user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
         if user is None:
-            return render(request, 'todo/loginuser.html',
-                          {'form': AuthenticationForm(),
-                           'error': 'Неверные данные для входа'}, )
+            return render(request, 'todo/loginuser.html', {
+                'form': AuthenticationForm(),
+                'error': 'Неверные данные для входа'})
         else:
             login(request, user)
             return redirect('currenttodos')
 
 
+# Создание задач
+@login_required
 def create_todo(request):
     if request.method == "GET":
         return render(request, 'todo/createtodo.html', {"form": TodoForm()})
@@ -78,6 +78,46 @@ def create_todo(request):
                 'error': 'Переданы неверные данные. Попробуйте еще раз'})
 
 
+# Меняем задачу
+@login_required
 def view_todo(request, todo_pk):
     todo = get_object_or_404(Todo, pk=todo_pk)
-    return render(request, 'todo/viewtodo.html', {'todo': todo})
+    if request.method == "GET":
+        form = TodoForm(instance=todo)
+        return render(request, 'todo/viewtodo.html',
+                      {'todo': todo, 'form': form})
+    else:
+        try:
+            form = TodoForm(request.POST, instance=todo)
+            form.save()
+            return redirect('currenttodos')
+        except ValueError:
+            return render(request, 'todo/viewtodo.html',
+                          {'todo': todo, 'form': form,
+                           'error': 'Неверные данные'})
+
+
+# Задача выполнена
+@login_required
+def complete_todo(request, todo_pk):
+    todo = get_object_or_404(Todo, pk=todo_pk, user=request.user)
+    if request.method == "POST":
+        todo.date_completed = timezone.now()
+        todo.save()
+        return redirect('currenttodos')
+
+
+# Вывод выполненых задач
+@login_required
+def completed_todos(request):
+    todos = Todo.objects.filter(user=request.user, date_completed__isnull=False).order_by('-date_completed')
+    return render(request, 'todo/completedtodos.html', {'todos': todos})
+
+
+# Удаление задач
+@login_required
+def delete_todo(request, todo_pk):
+    todo = get_object_or_404(Todo, pk=todo_pk, user=request.user)
+    if request.method == "POST":
+        todo.delete()
+        return redirect('currenttodos')

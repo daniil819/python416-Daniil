@@ -1,0 +1,13 @@
+{% extends 'skills/base.html' %}
+
+{% block content %}
+
+<h1>Вы успешно вошли</h1>
+<a href="{% url 'index' %}">
+        {% csrf_token %}
+ {{ form }}
+    <button class="btn">Читать</button>
+</a>
+
+
+{% endblock %}
