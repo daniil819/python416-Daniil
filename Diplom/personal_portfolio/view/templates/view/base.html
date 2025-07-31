@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ресторан</title>
+    <link rel="stylesheet" href="{% static 'css/styleDip.css' %}">
+</head>
+<body>
+<div class="Menu">
+    <div class="wrap">
+        <ul>
+            <li><a href="">Интерьер</a></li>
+            <li><a href="">Меню</a></li>
+            <li><a href="">Наш персонал</a></li>
+        </ul>
+    </div>
+</div>
+
+{% block content %}
+{% endblock %}
+<footer>
+<div class="Footer">
+    <div class="wrap">
+        <ul>
+            <li><a href="https://t.me/+ZkVWFWmI_483ZDNi"><img src="{% static 'images/telegram.png' %}"></a></li>
+            <li><a href="https://www.youtube.com/@foodtop10"><img src="{% static 'images/Youtube.png' %}"></a></li>
+            <li><a href=""><img src=""></a></li>
+        </ul>
+    </div>
+</div>
+</footer>
+
+</body>
+</html>
