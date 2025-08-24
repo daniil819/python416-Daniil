@@ -2,7 +2,17 @@
 {% load static %}
 {% block content %}
 
-<div class="center_pers"><h1>Наши сотрудники</h1></div>
-
+<div class="center_pers"><h1>Наши сотрудники!</h1></div>
+{% for item in personal %}
+<div class="column">
+    <div class="menu-card">
+        <img class="personal-image" src="{{ item.image.url }}">
+        <div class="menu-content">
+            <h3 class="menu-title">{{ item.name }}</h3>
+            <p class="job">Должность: {{ item.job }}</p>
+        </div>
+    </div>
+</div>
+{% endfor %}
 
 {% endblock %}

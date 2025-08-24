@@ -3,8 +3,8 @@
 {% block content %}
 
 
+{% for item in menu %}
 <div class="column">
-    {% for item in menu %}
     <div class="menu-card">
         <img class="menu-image" src="{{ item.image.url }}">
         <div class="menu-content">

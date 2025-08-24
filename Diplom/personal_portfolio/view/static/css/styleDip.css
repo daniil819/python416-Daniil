@@ -21,6 +21,8 @@ body {
 
 }
 
+
+
 /* Меню кнопок */
 .Menu {
     background: rgb(0, 0, 0);
@@ -156,8 +158,21 @@ body {
 }
 
 .menu-image {
-    width: 100%;
-    height: 180px;
+    width: 360px;
+    height: 360px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+}
+
+/* Персонал */
+.center_pers {
+    text-align: center;
+}
+
+.personal-image {
+    width: 360px;
+    height: 360px;
     object-fit: cover;
     display: block;
     transition: transform 0.5s;
