@@ -3,8 +3,8 @@
 {% block content %}
 
 
-{% for item in menu %}
 <div class="column">
+    {% for item in menu %}
     <div class="menu-card">
         <img class="menu-image" src="{{ item.image.url }}">
         <div class="menu-content">
@@ -12,6 +12,7 @@
             <p class="menu-recipe">{{ item.recipe|truncatechars:100 }}</p>
             <p class="rating">Рейтинг: {{ item.rating }}</p>
         </div>
+
     </div>
     {% endfor %}
 </div>

@@ -8,17 +8,23 @@
     <link rel="icon" href="{% static 'images/icon.png' %}">
 </head>
 <body>
-<div class="Menu">
-    <div class="wrap">
-        <ul>
-            <li><a href="">Заказать столик</a></li>
-            <li><a href="{% url 'menu' %}">Меню</a></li>
-            <li><a href="{% url 'personal' %}">Наш персонал</a></li>
-        </ul>
+<header>
+    <div class="Menu">
+        <div class="Logo">
+            <a href="{% url 'index' %}"><img src="{% static 'images/Rt black.png' %}"></a>
+        </div>
+        <div class="wrap">
+            <div>
+                <ul>
+                    <li><a href="">Заказать столик</a></li>
+                    <li><a href="{% url 'menu' %}">Меню</a></li>
+                    <li><a href="{% url 'personal' %}">Наш персонал</a></li>
+                    <li><a href="">Регестрация</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-</div>
-
-
+</header>
 
 {% block content %}
 {% endblock %}
