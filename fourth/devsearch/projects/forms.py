@@ -4,6 +4,12 @@ from django import forms
 
 
 class ReviewForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for fields in self.fields.values():
+            fields.widget.attrs.update({'class': 'input'})
+
     class Meta:
         model = Review
         fields = ['value', 'body']
