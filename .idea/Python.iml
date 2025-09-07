@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/third/todos" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/fourth/devsearch" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Diplom/personal_portfolio" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/fifth/programming_blog" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.11 virtualenv at C:\Users\Garis mod\Desktop\python\.venv" jdkType="Python SDK" />
