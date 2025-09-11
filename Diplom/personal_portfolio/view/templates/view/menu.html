@@ -5,8 +5,9 @@
 
 <div class="column">
     {% for item in menu %}
+
     <div class="menu-card">
-        <img class="menu-image" src="{{ item.image.url }}">
+        <a href="#"><img class="menu-image" src="{{ item.image.url }}"></a>
         <div class="menu-content">
             <h3 class="menu-title">{{ item.title }}</h3>
             <p class="menu-recipe">{{ item.recipe|truncatechars:100 }}</p>
